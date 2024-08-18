@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medicare_admin/database/auth_methods.dart';
 import 'package:medicare_admin/model/user_model.dart';
 import 'package:medicare_admin/screens/auth/forgot_password.dart';
-import 'package:medicare_admin/screens/home_page.dart';
+import 'package:medicare_admin/screens/database/auth_methods.dart';
+import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/app_colors.dart';
 import 'package:medicare_admin/utils/app_style.dart';
 import 'package:medicare_admin/utils/buttons.dart';
