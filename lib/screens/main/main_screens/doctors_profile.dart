@@ -81,8 +81,10 @@ class _DoctorsProfileState extends State<DoctorsProfile> {
             },
           )
         : StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection("doctors").snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection("doctors")
+                .where("isblocked", isEqualTo: false)
+                .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasError) {

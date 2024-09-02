@@ -10,6 +10,14 @@ class MedicinesList extends StatefulWidget {
 class _MedicinesListState extends State<MedicinesList> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+              "Related to Products Api Once Our Product Api Ready than result of recent order shows here")
+        ],
+      ),
+    );
   }
 }

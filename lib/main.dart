@@ -1,9 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:medicare_admin/firebase_options.dart';
-import 'package:medicare_admin/screens/add/add_medicine.dart';
 import 'package:medicare_admin/screens/auth/login_screen.dart';
-import 'package:medicare_admin/screens/auth/signup_account.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: AddMedicine(),
+      home: SignInPage(),
     );
   }
 }
