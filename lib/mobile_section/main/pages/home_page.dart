@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:medicare_admin/mobile_section/details/product_detail.dart';
+import 'package:medicare_admin/mobile_section/services/add_services.dart';
 import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
@@ -25,6 +26,10 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (builder) => AddServices()));
+        }),
         backgroundColor: white,
         endDrawer: Drawer(),
         appBar: AppBar(
@@ -35,19 +40,6 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
             backgroundImage: AssetImage("assets/logos.png"),
           ),
           centerTitle: true,
-          title: TextField(
-            decoration: InputDecoration(
-              fillColor: white,
-              filled: true,
-              border: InputBorder.none,
-              prefixIcon: Icon(
-                Icons.search,
-                color: hintColor,
-              ),
-              hintText: "Search by Doctor name or department",
-              hintStyle: GoogleFonts.poppins(fontSize: 14, color: hintColor),
-            ),
-          ),
         ),
         body: SingleChildScrollView(
           child: Column(
