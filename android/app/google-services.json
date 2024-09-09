@@ -1,110 +1,26 @@
 {
   "project_info": {
-    "project_number": "497438475571",
-    "project_id": "medicare-3dd28",
-    "storage_bucket": "medicare-3dd28.appspot.com"
+    "project_number": "913992234259",
+    "project_id": "estheva-f2ab9",
+    "storage_bucket": "estheva-f2ab9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:497438475571:android:f24eaa31e8f820267c6a46",
+        "mobilesdk_app_id": "1:913992234259:android:051965325000162083d6e6",
         "android_client_info": {
-          "package_name": "com.medicare_admin.app"
+          "package_name": "com.estheva.app"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "497438475571-lsbd6qrtgf6lrehiqila9pqefmlgqfe7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBHw94d6KrggFhHd_vizegQaGrkN1-4ndo"
+          "current_key": "AIzaSyARbcZAXsyzSP0yGuhGZX292wI8mR8gDco"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "497438475571-lsbd6qrtgf6lrehiqila9pqefmlgqfe7.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:497438475571:android:692b6af04ffa214d7c6a46",
-        "android_client_info": {
-          "package_name": "com.medicare_user.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "497438475571-ful7agho2er5o7ps9t1mjsb4aq5rnlg1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.medicare_user.app",
-            "certificate_hash": "ae4faa1295bb23700b939d4ae40c85c1b03f3177"
-          }
-        },
-        {
-          "client_id": "497438475571-lsbd6qrtgf6lrehiqila9pqefmlgqfe7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBHw94d6KrggFhHd_vizegQaGrkN1-4ndo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "497438475571-lsbd6qrtgf6lrehiqila9pqefmlgqfe7.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:497438475571:android:b7d34c082703c1f87c6a46",
-        "android_client_info": {
-          "package_name": "com.medicaredoctor.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "497438475571-m6v1i1bgov7h0oa2e3tcajs476hembhg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.medicaredoctor.app",
-            "certificate_hash": "ae4faa1295bb23700b939d4ae40c85c1b03f3177"
-          }
-        },
-        {
-          "client_id": "497438475571-lsbd6qrtgf6lrehiqila9pqefmlgqfe7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBHw94d6KrggFhHd_vizegQaGrkN1-4ndo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "497438475571-lsbd6qrtgf6lrehiqila9pqefmlgqfe7.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -1,4 +1,4 @@
-package com.medicare_admin.app
+package com.estheva.app
 
 import io.flutter.embedding.android.FlutterActivity
 

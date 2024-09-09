@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAirHw0hLErDFJQFKSKLILakWSPcJYhb9I',
-    appId: '1:497438475571:web:31820af31c7c4d607c6a46',
-    messagingSenderId: '497438475571',
-    projectId: 'medicare-3dd28',
-    authDomain: 'medicare-3dd28.firebaseapp.com',
-    storageBucket: 'medicare-3dd28.appspot.com',
-    measurementId: 'G-15VJF21G1C',
+    apiKey: 'AIzaSyBAWcpNVIosQau0BTJiPDMrfE1wV4_KgNo',
+    appId: '1:913992234259:web:36ef6e1784e31db583d6e6',
+    messagingSenderId: '913992234259',
+    projectId: 'estheva-f2ab9',
+    authDomain: 'estheva-f2ab9.firebaseapp.com',
+    storageBucket: 'estheva-f2ab9.appspot.com',
+    measurementId: 'G-YVV5YHYQ52',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBHw94d6KrggFhHd_vizegQaGrkN1-4ndo',
-    appId: '1:497438475571:android:f24eaa31e8f820267c6a46',
-    messagingSenderId: '497438475571',
-    projectId: 'medicare-3dd28',
-    storageBucket: 'medicare-3dd28.appspot.com',
+    apiKey: 'AIzaSyARbcZAXsyzSP0yGuhGZX292wI8mR8gDco',
+    appId: '1:913992234259:android:051965325000162083d6e6',
+    messagingSenderId: '913992234259',
+    projectId: 'estheva-f2ab9',
+    storageBucket: 'estheva-f2ab9.appspot.com',
   );
 }

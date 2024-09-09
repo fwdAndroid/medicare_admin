@@ -246,6 +246,7 @@ class _AddServicesState extends State<AddServices> {
                       color: mainBtnColor,
                       title: "Publish",
                       onTap: () async {
+                        print("click");
                         if (descriptionController.text.isEmpty) {
                           showMessageBar("Description is Required", context);
                         } else if (_image == null) {
@@ -253,6 +254,7 @@ class _AddServicesState extends State<AddServices> {
                         } else if (priceController.text.isEmpty) {
                           showMessageBar("Price is Required", context);
                         } else {
+                          print("clsasdd");
                           int discount = 0;
                           if (discountController.text.isNotEmpty) {
                             discount =
@@ -267,6 +269,7 @@ class _AddServicesState extends State<AddServices> {
                           setState(() {
                             isAdded = true;
                           });
+                          print("asdsa");
                           await Database().addServices(
                               serviceDescription:
                                   descriptionController.text.trim(),

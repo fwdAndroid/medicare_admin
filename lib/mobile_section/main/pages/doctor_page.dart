@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicare_admin/mobile_section/details/doctor_detail.dart';
+import 'package:medicare_admin/mobile_section/doctor/add_doctor.dart';
 import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
@@ -17,6 +18,16 @@ class _DoctorPageState extends State<DoctorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          child: Icon(
+            Icons.add,
+            color: white,
+          ),
+          backgroundColor: mainBtnColor,
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (builder) => AddDoctor()));
+          }),
       appBar: AppBar(
         backgroundColor: mainBtnColor,
         automaticallyImplyLeading: false,

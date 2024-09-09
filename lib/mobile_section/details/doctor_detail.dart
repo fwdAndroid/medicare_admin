@@ -326,18 +326,6 @@ class _DoctorDetailState extends State<DoctorDetail> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SaveButton(
-                      color: mainBtnColor,
-                      title: "Make Appointment",
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => AppointmentBegin()));
-                      }),
-                ),
               ],
             ),
           ),

@@ -26,10 +26,16 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (builder) => AddServices()));
-        }),
+        floatingActionButton: FloatingActionButton(
+            child: Icon(
+              Icons.add,
+              color: white,
+            ),
+            backgroundColor: mainBtnColor,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (builder) => AddServices()));
+            }),
         backgroundColor: white,
         endDrawer: Drawer(),
         appBar: AppBar(
