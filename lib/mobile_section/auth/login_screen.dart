@@ -182,35 +182,6 @@ class _MobileLoginState extends State<MobileLogin> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        checkColor: Colors.white,
-                        value: isChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            isChecked = value!;
-                          });
-                        },
-                      ),
-                      Text(
-                        'Remember Me',
-                        style: GoogleFonts.plusJakartaSans(
-                            color: black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  TextButton(onPressed: () {}, child: Text("Forgot Password"))
-                ],
-              ),
-            ),
             isLoading
                 ? CircularProgressIndicator()
                 : SaveButton(
@@ -218,28 +189,6 @@ class _MobileLoginState extends State<MobileLogin> {
                     title: "Login",
                     onTap: signIn,
                   ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (builder) => MobileSignupScreen()));
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text.rich(TextSpan(
-                    text: 'Don’t have an Admin Account Create New Account? ',
-                    children: <InlineSpan>[
-                      TextSpan(
-                        text: 'Sign Up',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: mainBtnColor),
-                      )
-                    ])),
-              ),
-            ),
           ],
         ),
       ),
