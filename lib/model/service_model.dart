@@ -4,8 +4,8 @@ class ServiceModel {
   String uuid;
   String serviceName;
   String photoURL;
-  int price;
-  int discount;
+  String price;
+  String discount;
   String serviceSubcategory;
   String serviceCategory;
   String serviceDescription;

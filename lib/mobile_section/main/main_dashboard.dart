@@ -4,7 +4,6 @@ import 'package:medicare_admin/mobile_section/main/pages/appointment_page.dart';
 import 'package:medicare_admin/mobile_section/main/pages/doctor_page.dart';
 import 'package:medicare_admin/mobile_section/main/pages/history_page.dart';
 import 'package:medicare_admin/mobile_section/main/pages/home_page.dart';
-import 'package:medicare_admin/mobile_section/nutritions/nutritions.dart';
 import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
@@ -21,7 +20,6 @@ class _MainDashboardState extends State<MainDashboard> {
     DoctorPage(),
     AppointmentPage(),
     HistoryPage(),
-    Nutritions()
   ];
 
   @override
@@ -97,16 +95,6 @@ class _MainDashboardState extends State<MainDashboard> {
                         "assets/history_medic.png",
                         height: 18,
                         width: 20,
-                      ),
-                label: 'History',
-                backgroundColor: white,
-              ),
-              BottomNavigationBarItem(
-                icon: _currentIndex == 4
-                    ? Icon(Icons.nature_outlined, color: mainBtnColor)
-                    : Icon(
-                        Icons.nature_people_outlined,
-                        color: Colors.grey,
                       ),
                 label: 'History',
                 backgroundColor: white,

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,12 +5,13 @@ import 'package:medicare_admin/mobile_section/appointments/appointment_history.d
 import 'package:medicare_admin/mobile_section/setting_pages/change_password.dart';
 import 'package:medicare_admin/mobile_section/setting_pages/notification_screen.dart';
 import 'package:medicare_admin/mobile_section/setting_pages/payment_page.dart';
-import 'package:medicare_admin/mobile_section/setting_pages/privacy_policy.dart';
 import 'package:medicare_admin/mobile_section/setting_pages/support.dart';
 import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/widgets/logout_widget.dart';
+
+import '../../offers/create_offers.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -36,7 +36,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 child: Column(
                   children: [
                     Text(
-                      "Farhan Ali",
+                      "Hi Admin",
                       style: GoogleFonts.workSans(
                           fontWeight: FontWeight.w600, fontSize: 22),
                     ),
@@ -74,12 +74,6 @@ class _HistoryPageState extends State<HistoryPage> {
                       trailing: Icon(
                         Icons.arrow_forward_ios,
                         color: appColor,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
-                      child: Divider(
-                        color: borderColor,
                       ),
                     ),
                     Padding(
@@ -171,12 +165,6 @@ class _HistoryPageState extends State<HistoryPage> {
                         color: borderColor,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
-                      child: Divider(
-                        color: borderColor,
-                      ),
-                    ),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       color: mainBtnColor,
@@ -193,17 +181,15 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
                     ListTile(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => PrivacyPolicy()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (builder) => Support()));
                       },
                       leading: Icon(
-                        Icons.privacy_tip,
+                        Icons.help,
                         color: appColor,
                       ),
                       title: Text(
-                        "Privacy Policy ",
+                        "Help & Support",
                         style: GoogleFonts.workSans(
                             fontWeight: FontWeight.w500, fontSize: 16),
                       ),
@@ -220,15 +206,17 @@ class _HistoryPageState extends State<HistoryPage> {
                     ),
                     ListTile(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (builder) => Support()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => CreateOffers()));
                       },
                       leading: Icon(
-                        Icons.help,
+                        Icons.offline_bolt,
                         color: appColor,
                       ),
                       title: Text(
-                        "Help & Support",
+                        "Create Offers",
                         style: GoogleFonts.workSans(
                             fontWeight: FontWeight.w500, fontSize: 16),
                       ),

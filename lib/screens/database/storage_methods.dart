@@ -13,7 +13,6 @@ class StorageMethods {
     Reference reference = firebaseStorage
         .ref()
         .child(childName)
-        .child(_auth.currentUser!.uid)
         .child(Uuid().v1()); // Generate a unique ID for each image
 
     UploadTask uploadTask = reference.putData(file);

@@ -50,8 +50,8 @@ class Database {
       required String serviceCategory,
       required String serviceSubcategory,
       required String serviceDescription,
-      required int price,
-      required int discount,
+      required String price,
+      required String discount,
       required Uint8List file}) async {
     String res = 'Wrong Service Name';
     try {

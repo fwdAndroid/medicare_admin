@@ -1,15 +1,18 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medicare_admin/mobile_section/main/main_dashboard.dart';
 import 'package:medicare_admin/screens/database/database.dart';
+import 'package:medicare_admin/screens/database/storage_methods.dart';
 import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/utils/image_utils.dart';
 import 'package:medicare_admin/widgets/text_form_field.dart';
+import 'package:uuid/uuid.dart';
 
 class AddServices extends StatefulWidget {
   const AddServices({super.key});
@@ -24,7 +27,7 @@ class _AddServicesState extends State<AddServices> {
   TextEditingController priceController = TextEditingController();
   TextEditingController discountController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-
+  var uuid = Uuid().v4();
   final Map<String, List<String>> _serviceCategories = {
     'Body Contouring Packages': [
       '1D Ultrasound Cavitation Slimming Treatment',
@@ -269,16 +272,34 @@ class _AddServicesState extends State<AddServices> {
                           setState(() {
                             isAdded = true;
                           });
-                          print("asdsa");
-                          await Database().addServices(
-                              serviceDescription:
-                                  descriptionController.text.trim(),
-                              serviceCategory: _selectedCategory!,
-                              serviceName: _selectedCategory!,
-                              file: _image!,
-                              serviceSubcategory: _selectedSubCategory!,
-                              price: int.parse(priceController.text.trim()),
-                              discount: discount);
+
+                          String photoURL =
+                              await StorageMethods().uploadImageToStorage(
+                            'ProfilePics',
+                            _image!,
+                          );
+
+                          await FirebaseFirestore.instance
+                              .collection("services")
+                              .doc(uuid)
+                              .set({
+                            "serviceCategory": _selectedCategory!,
+                            "serviceName": _selectedCategory!,
+                            "serviceSubcategory": _selectedSubCategory!,
+                            "price": int.parse(priceController.text),
+                            "discount": discount,
+                            "uuid": uuid,
+                            "photoURL": photoURL
+                          });
+                          // await Database().addServices(
+                          //     serviceDescription:
+                          //         descriptionController.text.trim(),
+                          //     serviceCategory: _selectedCategory!,
+                          //     serviceName: _selectedCategory!,
+                          //     file: _image!,
+                          //     serviceSubcategory: _selectedSubCategory!,
+                          //     price: priceController.text.trim(),
+                          //     discount: discountController.text);
                           setState(() {
                             isAdded = false;
                           });
