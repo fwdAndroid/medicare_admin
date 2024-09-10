@@ -287,6 +287,7 @@ class _AddServicesState extends State<AddServices> {
                             "serviceName": _selectedCategory!,
                             "serviceSubcategory": _selectedSubCategory!,
                             "price": int.parse(priceController.text),
+                            "description": descriptionController.text.trim(),
                             "discount": discount,
                             "uuid": uuid,
                             "photoURL": photoURL

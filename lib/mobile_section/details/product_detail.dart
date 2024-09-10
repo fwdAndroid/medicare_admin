@@ -5,7 +5,25 @@ import 'package:medicare_admin/utils/colors.dart';
 import 'product_booking.dart';
 
 class ProductDetail extends StatefulWidget {
-  const ProductDetail({super.key});
+  final discount;
+  final photoURL;
+  final price;
+  final serviceCategory;
+  final serviceSubCategory;
+  final serviceName;
+  final description;
+  final uuid;
+  const ProductDetail({
+    super.key,
+    required this.description,
+    required this.discount,
+    required this.photoURL,
+    required this.uuid,
+    required this.price,
+    required this.serviceCategory,
+    required this.serviceName,
+    required this.serviceSubCategory,
+  });
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -41,11 +59,16 @@ class _ProductDetailState extends State<ProductDetail> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset("assets/body.png"),
+            Image.network(
+              widget.photoURL,
+              height: 200,
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width,
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "Comprehensive Full Body Checkup",
+                widget.serviceName,
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -54,155 +77,13 @@ class _ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "Stool, urine test",
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: Colors.red,
-                    ),
-                  ),
-                  Text(
-                    "Results in 3-4 days",
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      color: Colors.black,
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.call, color: Colors.green, size: 30),
-                    onPressed: () {
-                      // WhatsApp button action
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "Get the detailed check-up you deserve with this comprehensive premium test. Your test results will provide detailed information on the 90 biomarkers measured and whether levels are low, normal, or high. Together, these biomarkers offer a broad overview into the current status of your cholesterol, liver, kidneys, cardiac enzyme and...",
+                widget.description,
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   color: Colors.black54,
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RadioListTile(
-                    value: 0,
-                    groupValue: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value!;
-                      });
-                    },
-                    title: Text(
-                      "Standard - 500 ml",
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    subtitle: Text(
-                      "499.00 AED",
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        color: Colors.black54,
-                      ),
-                    ),
-                  ),
-                  RadioListTile(
-                    value: 1,
-                    groupValue: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value!;
-                      });
-                    },
-                    title: Text(
-                      "IV Glutathione + Vit C : 3 Sessions",
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    subtitle: Row(
-                      children: [
-                        Text(
-                          "1422.00 AED",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Container(
-                          color: Colors.orange.shade100,
-                          padding: EdgeInsets.all(4),
-                          child: Text(
-                            "5% OFF",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.orange,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  RadioListTile(
-                    value: 2,
-                    groupValue: selectedOption,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOption = value!;
-                      });
-                    },
-                    title: Text(
-                      "IV Glutathione + Vit C : 5 Sessions",
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    subtitle: Row(
-                      children: [
-                        Text(
-                          "2295.00 AED",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Container(
-                          color: Colors.orange.shade100,
-                          padding: EdgeInsets.all(4),
-                          child: Text(
-                            "8% OFF",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.orange,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
               ),
             ),
             Padding(
@@ -218,7 +99,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "20% Flat Discount",
+                          widget.discount.toString() + "%",
                           style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -226,7 +107,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           ),
                         ),
                         Text(
-                          "Use code SUMMER20 | above AED 10",
+                          widget.price.toString() + "AED",
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                             color: Colors.black54,
@@ -236,45 +117,6 @@ class _ProductDetailState extends State<ProductDetail> {
                     ),
                   ],
                 ),
-              ),
-            ),
-            Container(
-              color: Colors.grey.shade200,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "3036 AED",
-                    style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: mainBtnColor,
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Book now action
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) => ProductBooking()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: mainBtnColor,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                    ),
-                    child: Text(
-                      "Book Now",
-                      style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],

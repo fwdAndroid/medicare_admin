@@ -12,6 +12,8 @@ class Database {
       {required String serviceName,
       required String serviceCategory,
       required String experience,
+      required String doctorEmail,
+      required String doctorPassword,
       required String serviceDescription,
       required int price,
       required Uint8List file}) async {
@@ -26,6 +28,8 @@ class Database {
         var uuid = Uuid().v4();
         //Add User to the database with modal
         DoctorModel userModel = DoctorModel(
+            email: doctorEmail,
+            pass: doctorPassword,
             doctorCategory: serviceCategory,
             doctorDescription: serviceDescription,
             experience: experience,

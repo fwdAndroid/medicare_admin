@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -37,7 +38,6 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
                   MaterialPageRoute(builder: (builder) => AddServices()));
             }),
         backgroundColor: white,
-        endDrawer: Drawer(),
         appBar: AppBar(
           elevation: 0,
           iconTheme: IconThemeData(color: white),
@@ -46,6 +46,7 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
             backgroundImage: AssetImage("assets/logos.png"),
           ),
           centerTitle: true,
+          title: Text("Home Page"),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -119,64 +120,100 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
               SizedBox(
                 height: 160,
                 width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 200,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => ProductDetail()));
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                "assets/body.png",
-                                height: 75,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, left: 8, right: 8),
-                                child: Text(
-                                  '2D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
-                                  style: TextStyle(
-                                      color: appColor,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Center(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 8.0, top: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffD3D3D3),
-                                      borderRadius: BorderRadius.circular(10),
+                child: StreamBuilder<Object>(
+                    stream: FirebaseFirestore.instance
+                        .collection("services")
+                        .where("serviceCategory",
+                            isEqualTo: "Body Contouring Packages")
+                        .snapshots(),
+                    builder: (context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      if (!snapshot.hasData || snapshot.data == null) {
+                        return Center(child: Text('No Service available'));
+                      }
+                      var snap = snapshot.data;
+                      return ListView.builder(
+                          itemCount: snap.docs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var serviceData = snap.docs[index].data();
+                            return SizedBox(
+                              width: 200,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) => ProductDetail(
+                                                description:
+                                                    serviceData['description'],
+                                                discount:
+                                                    serviceData['discount']
+                                                        .toString(),
+                                                photoURL:
+                                                    serviceData['photoURL'],
+                                                uuid: serviceData['uuid'],
+                                                price: serviceData['price']
+                                                    .toString(),
+                                                serviceCategory: serviceData[
+                                                    'serviceCategory'],
+                                                serviceName:
+                                                    serviceData['serviceName'],
+                                                serviceSubCategory: serviceData[
+                                                    'serviceSubCategory'],
+                                              )));
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Image.network(
+                                      width: MediaQuery.of(context).size.width,
+                                      serviceData['photoURL'],
+                                      height: 75,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
                                       child: Text(
-                                        '200 AED',
-                                        textAlign: TextAlign.start,
+                                        serviceData['serviceSubcategory'],
                                         style: TextStyle(
-                                            color: mainBtnColor,
+                                            color: appColor,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
-                                  ),
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8.0, top: 8),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffD3D3D3),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              serviceData['price'].toString() +
+                                                  "AED",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  color: mainBtnColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      );
+                            );
+                          });
                     }),
               ),
               const SizedBox(
@@ -198,65 +235,110 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
               SizedBox(
                 height: 160,
                 width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 200,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => ProductDetail()));
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                "assets/body.png",
-                                height: 75,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, left: 8, right: 8),
-                                child: Text(
-                                  '2D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
-                                  style: TextStyle(
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("services")
+                      .where("serviceCategory", isEqualTo: "IV Drips Therapy")
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData ||
+                        snapshot.data == null ||
+                        snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No Service available',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }
+
+                    var snap = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: snap.docs.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var serviceData =
+                            snap.docs[index].data() as Map<String, dynamic>;
+                        return SizedBox(
+                          width: 200,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => ProductDetail(
+                                            description:
+                                                serviceData['description'],
+                                            discount: serviceData['discount']
+                                                .toString(),
+                                            photoURL: serviceData['photoURL'],
+                                            uuid: serviceData['uuid'],
+                                            price:
+                                                serviceData['price'].toString(),
+                                            serviceCategory:
+                                                serviceData['serviceCategory'],
+                                            serviceName:
+                                                serviceData['serviceName'],
+                                            serviceSubCategory: serviceData[
+                                                'serviceSubCategory'],
+                                          )));
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.network(
+                                  serviceData['photoURL'],
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 75,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, left: 8, right: 8),
+                                  child: Text(
+                                    serviceData['serviceSubcategory'],
+                                    style: TextStyle(
                                       color: appColor,
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Center(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 8.0, top: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffD3D3D3),
-                                      borderRadius: BorderRadius.circular(10),
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '200 AED',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                  ),
+                                ),
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffD3D3D3),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          serviceData['price'].toString() +
+                                              " AED",
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
                                             color: mainBtnColor,
                                             fontSize: 12,
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -277,65 +359,111 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
               SizedBox(
                 height: 160,
                 width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 200,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => ProductDetail()));
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                "assets/body.png",
-                                height: 75,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, left: 8, right: 8),
-                                child: Text(
-                                  '2D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
-                                  style: TextStyle(
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("services")
+                      .where("serviceCategory",
+                          isEqualTo: "IV Drips Therapy Packages")
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData ||
+                        snapshot.data == null ||
+                        snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No Service available',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }
+
+                    var snap = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: snap.docs.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var serviceData =
+                            snap.docs[index].data() as Map<String, dynamic>;
+                        return SizedBox(
+                          width: 200,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => ProductDetail(
+                                            description:
+                                                serviceData['description'],
+                                            discount: serviceData['discount']
+                                                .toString(),
+                                            photoURL: serviceData['photoURL'],
+                                            uuid: serviceData['uuid'],
+                                            price:
+                                                serviceData['price'].toString(),
+                                            serviceCategory:
+                                                serviceData['serviceCategory'],
+                                            serviceName:
+                                                serviceData['serviceName'],
+                                            serviceSubCategory: serviceData[
+                                                'serviceSubCategory'],
+                                          )));
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.network(
+                                  serviceData['photoURL'],
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 75,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, left: 8, right: 8),
+                                  child: Text(
+                                    serviceData['serviceSubcategory'],
+                                    style: TextStyle(
                                       color: appColor,
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Center(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 8.0, top: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffD3D3D3),
-                                      borderRadius: BorderRadius.circular(10),
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '200 AED',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                  ),
+                                ),
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffD3D3D3),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          serviceData['price'].toString() +
+                                              " AED",
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
                                             color: mainBtnColor,
                                             fontSize: 12,
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -356,65 +484,110 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
               SizedBox(
                 height: 160,
                 width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 200,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => ProductDetail()));
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                "assets/body.png",
-                                height: 75,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, left: 8, right: 8),
-                                child: Text(
-                                  '2D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
-                                  style: TextStyle(
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("services")
+                      .where("serviceCategory", isEqualTo: "Health Checkup")
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData ||
+                        snapshot.data == null ||
+                        snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No Service available',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }
+
+                    var snap = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: snap.docs.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var serviceData =
+                            snap.docs[index].data() as Map<String, dynamic>;
+                        return SizedBox(
+                          width: 200,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => ProductDetail(
+                                            description:
+                                                serviceData['description'],
+                                            discount: serviceData['discount']
+                                                .toString(),
+                                            photoURL: serviceData['photoURL'],
+                                            uuid: serviceData['uuid'],
+                                            price:
+                                                serviceData['price'].toString(),
+                                            serviceCategory:
+                                                serviceData['serviceCategory'],
+                                            serviceName:
+                                                serviceData['serviceName'],
+                                            serviceSubCategory: serviceData[
+                                                'serviceSubCategory'],
+                                          )));
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.network(
+                                  serviceData['photoURL'],
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 75,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, left: 8, right: 8),
+                                  child: Text(
+                                    serviceData['serviceSubcategory'],
+                                    style: TextStyle(
                                       color: appColor,
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Center(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 8.0, top: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffD3D3D3),
-                                      borderRadius: BorderRadius.circular(10),
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '200 AED',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                  ),
+                                ),
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffD3D3D3),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          serviceData['price'].toString() +
+                                              " AED",
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
                                             color: mainBtnColor,
                                             fontSize: 12,
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -432,65 +605,110 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
               SizedBox(
                 height: 160,
                 width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        width: 200,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) => ProductDetail()));
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                width: MediaQuery.of(context).size.width,
-                                "assets/body.png",
-                                height: 75,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, left: 8, right: 8),
-                                child: Text(
-                                  '2D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
-                                  style: TextStyle(
+                child: StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("services")
+                      .where("serviceCategory", isEqualTo: "Physiotherapy")
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData ||
+                        snapshot.data == null ||
+                        snapshot.data!.docs.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No Service available',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }
+
+                    var snap = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: snap.docs.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        var serviceData =
+                            snap.docs[index].data() as Map<String, dynamic>;
+                        return SizedBox(
+                          width: 200,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => ProductDetail(
+                                            description:
+                                                serviceData['description'],
+                                            discount: serviceData['discount']
+                                                .toString(),
+                                            photoURL: serviceData['photoURL'],
+                                            uuid: serviceData['uuid'],
+                                            price:
+                                                serviceData['price'].toString(),
+                                            serviceCategory:
+                                                serviceData['serviceCategory'],
+                                            serviceName:
+                                                serviceData['serviceName'],
+                                            serviceSubCategory: serviceData[
+                                                'serviceSubCategory'],
+                                          )));
+                            },
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.network(
+                                  serviceData['photoURL'],
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 75,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, left: 8, right: 8),
+                                  child: Text(
+                                    serviceData['serviceSubcategory'],
+                                    style: TextStyle(
                                       color: appColor,
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Center(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 8.0, top: 8),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffD3D3D3),
-                                      borderRadius: BorderRadius.circular(10),
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '200 AED',
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                  ),
+                                ),
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffD3D3D3),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          serviceData['price'].toString() +
+                                              " AED",
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
                                             color: mainBtnColor,
                                             fontSize: 12,
-                                            fontWeight: FontWeight.w600),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),

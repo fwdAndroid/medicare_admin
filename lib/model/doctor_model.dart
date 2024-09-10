@@ -5,6 +5,8 @@ class DoctorModel {
   String doctorName;
   String photoURL;
   int price;
+  String email;
+  String pass;
   String experience;
   String doctorCategory;
   String doctorDescription;
@@ -14,6 +16,8 @@ class DoctorModel {
     required this.doctorName,
     required this.doctorCategory,
     required this.experience,
+    required this.email,
+    required this.pass,
     required this.price,
     required this.doctorDescription,
     required this.photoURL,
@@ -22,6 +26,8 @@ class DoctorModel {
   ///Converting Object into Json Object
   Map<String, dynamic> toJson() => {
         'photoURL': photoURL,
+        'email': email,
+        "pass": pass,
         'uuid': uuid,
         'experience': experience,
         'doctorDescription': doctorDescription,
@@ -35,6 +41,8 @@ class DoctorModel {
     var snapshot = snaps.data() as Map<String, dynamic>;
 
     return DoctorModel(
+      pass: snapshot['pass'],
+      email: snapshot['email'],
       photoURL: snapshot['photoURL'],
       experience: snapshot['experience'],
       uuid: snapshot['uuid'],

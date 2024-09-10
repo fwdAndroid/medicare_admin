@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medicare_admin/mobile_section/main/main_dashboard.dart';
@@ -23,6 +25,8 @@ class _AddDoctorState extends State<AddDoctor> {
   TextEditingController priceController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController experienceController = TextEditingController();
+  TextEditingController doctorEmailController = TextEditingController();
+  TextEditingController doctorPasswordController = TextEditingController();
 
   Uint8List? _image;
   bool isAdded = false;
@@ -70,6 +74,22 @@ class _AddDoctorState extends State<AddDoctor> {
                 child: TextFormInputField(
                   controller: serviceNameController,
                   hintText: "Doctor Name",
+                  textInputType: TextInputType.text,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
+                child: TextFormInputField(
+                  controller: doctorEmailController,
+                  hintText: "Doctor Email",
+                  textInputType: TextInputType.text,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
+                child: TextFormInputField(
+                  controller: doctorEmailController,
+                  hintText: "Doctor Password",
                   textInputType: TextInputType.text,
                 ),
               ),
@@ -152,6 +172,9 @@ class _AddDoctorState extends State<AddDoctor> {
                           });
                           print("asdsa");
                           await Database().addDoctor(
+                            doctorEmail: doctorEmailController.text.trim(),
+                            doctorPassword:
+                                doctorPasswordController.text.trim(),
                             serviceName: serviceNameController.text.trim(),
                             serviceCategory: dropdownvalue,
                             experience: experienceController.text,
