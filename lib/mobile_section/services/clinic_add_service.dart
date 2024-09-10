@@ -87,7 +87,7 @@ class _ClinicAddServiceState extends State<ClinicAddService> {
     ],
 
     //
-    'Aesthetic ': [
+    'Aesthetic': [
       'Botox for Men - 1 Area, Allergan',
       'Botox for Women - 1 Area, Allergan',
       'Dermal Filler - 1 ml Croma',
