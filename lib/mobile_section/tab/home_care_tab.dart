@@ -115,6 +115,7 @@ class _HomeCareTabState extends State<HomeCareTab> {
                         .collection("services")
                         .where("serviceCategory",
                             isEqualTo: "Body Contouring Packages")
+                        .where("type", isEqualTo: "home")
                         .snapshots(),
                     builder: (context, AsyncSnapshot snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
@@ -231,6 +232,7 @@ class _HomeCareTabState extends State<HomeCareTab> {
                   stream: FirebaseFirestore.instance
                       .collection("services")
                       .where("serviceCategory", isEqualTo: "IV Drips Therapy")
+                      .where("type", isEqualTo: "home")
                       .snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -358,6 +360,7 @@ class _HomeCareTabState extends State<HomeCareTab> {
                       .collection("services")
                       .where("serviceCategory",
                           isEqualTo: "IV Drips Therapy Packages")
+                      .where("type", isEqualTo: "home")
                       .snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -484,6 +487,7 @@ class _HomeCareTabState extends State<HomeCareTab> {
                   stream: FirebaseFirestore.instance
                       .collection("services")
                       .where("serviceCategory", isEqualTo: "Health Checkup")
+                      .where("type", isEqualTo: "home")
                       .snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -607,6 +611,7 @@ class _HomeCareTabState extends State<HomeCareTab> {
                   stream: FirebaseFirestore.instance
                       .collection("services")
                       .where("serviceCategory", isEqualTo: "Physiotherapy")
+                      .where("type", isEqualTo: "home")
                       .snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {

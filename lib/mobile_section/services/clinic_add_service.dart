@@ -1,47 +1,56 @@
-import 'dart:typed_data';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:medicare_admin/mobile_section/main/main_dashboard.dart';
 import 'package:medicare_admin/screens/database/database.dart';
-import 'package:medicare_admin/screens/database/storage_methods.dart';
 import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/utils/image_utils.dart';
 import 'package:medicare_admin/widgets/text_form_field.dart';
-import 'package:uuid/uuid.dart';
 
-class AddServices extends StatefulWidget {
-  const AddServices({super.key});
+class ClinicAddService extends StatefulWidget {
+  const ClinicAddService({super.key});
 
   @override
-  State<AddServices> createState() => _AddServicesState();
+  State<ClinicAddService> createState() => _ClinicAddServiceState();
 }
 
-class _AddServicesState extends State<AddServices> {
+class _ClinicAddServiceState extends State<ClinicAddService> {
   TextEditingController serviceNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   TextEditingController discountController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  var uuid = Uuid().v4();
   final Map<String, List<String>> _serviceCategories = {
+    //Done
     'Body Contouring Packages': [
       '1D Ultrasound Cavitation Slimming Treatment',
       '2D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
       '3D Ultrasound Cavitation + RF + Vacu Slimming Treatment',
-      'Multipolar Radiofrequency Skin Lifting for Body and Face'
+      'Endermology',
+      'Emerald Lipo Laser',
+      'Fat reduction Injections for Body',
+      'Fat Freezing - 60 min. 2 Areas',
+      'The Sculpt RF',
+      'HIFU Body 1 Area',
+      'Multipolar Radiofrequency Skin Lifting for Body and Face',
     ],
+
+    //Done
     'IV Drips Therapy': [
+      'NAD+ IV Drips Therapy',
+      'Detox IV Drips',
       'Anti-Aging IV Drips Therapy',
       'Detox IV Drips',
       'Hydration IV Drips',
       'Iron Drip Therapy',
       "NAD+ IV Drips Therapy",
     ],
+
+    //Done
     'IV Drips Therapy Packages': [
       'Anti-Aging IV Drips Packages',
       'Detox IV Packages',
@@ -49,6 +58,8 @@ class _AddServicesState extends State<AddServices> {
       'Iron Drip Packages',
       "NAD+ IV Drips Packages",
     ],
+
+    //Done
     'Health Checkup': [
       'Bio Advanced Blood Test',
       'Bio Executive Blood Test',
@@ -58,15 +69,47 @@ class _AddServicesState extends State<AddServices> {
       'Cardiac Risk Blood Test',
       'Female Hormone Profile',
       'Full Male Health Checkup',
+      'Bio Full Body Health Checkup Women',
+      'Obesity Risk Profile',
       'STD Profile by PRC',
       'STD Risk Assessment'
     ],
+
+    //Done
     'Physiotherapy': [
-      'Physiotherapy',
-      'Sports Massage 50 min',
-      'Madero Therapy -  Lymphatic Drainage Massage 50 min',
       'Cupping Therapy',
+      'Electro Muscle Stimulation (EMS)',
+      'Manual Lymphatic Drainage Massage 50 min.',
+      'Madero Therapy -  Lymphatic Drainage Massage 50 min',
+      'Physiotherapy',
+      'Pressotherapy - Lymphatic Drainage 30 min.',
+      'Sports Massage 50 min',
     ],
+
+    //
+    'Aesthetic ': [
+      'Botox for Men - 1 Area, Allergan',
+      'Botox for Women - 1 Area, Allergan',
+      'Dermal Filler - 1 ml Croma',
+      'Dermal Filler - 1ml. Juvederm',
+      'Dermal Filler - Neauvia 1ml',
+      'Dermal Fillers for Men - 1 ml Neauvia',
+      'Dermal Fillers for Women - 1 ml',
+      'Free Aesthetic Consultation',
+      'Hair Growth Treatment for Men:  Polipeptides Mesotherapy',
+      'HIFU - Double Chin Reduction',
+      'HIFU Body 1 Area',
+      'HIFU Face Lift',
+      'Hydra Deluxe Skin Booster',
+      'Hydrafacial',
+      'Intense Lips Filler - 1 ml Neauvia',
+      'Lip Filler -  1 ml Croma',
+      'Lips Filler - 1 ml. Juvederm',
+      'Mesotherapy with Dermapen: The Ultimate Anti-Aging Solution',
+      'Mesotherapy: Needle-Free Electroporation',
+      'Fat Reduction Injections For Double Chain'
+    ],
+    'Hair Transplant': ['Hair Transplant']
   };
 
   String? _selectedCategory;
@@ -274,7 +317,7 @@ class _AddServicesState extends State<AddServices> {
                           });
 
                           await Database().addServices(
-                              type: "home",
+                              type: "clinic",
                               serviceDescription:
                                   descriptionController.text.trim(),
                               serviceCategory: _selectedCategory!,

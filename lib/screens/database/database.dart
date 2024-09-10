@@ -55,6 +55,7 @@ class Database {
       required String serviceSubcategory,
       required String serviceDescription,
       required String price,
+      required String type,
       required String discount,
       required Uint8List file}) async {
     String res = 'Wrong Service Name';
@@ -70,6 +71,7 @@ class Database {
         ServiceModel userModel = ServiceModel(
             serviceCategory: serviceCategory,
             serviceDescription: serviceDescription,
+            type: type,
             serviceName: serviceName,
             serviceSubcategory: serviceSubcategory,
             discount: discount,

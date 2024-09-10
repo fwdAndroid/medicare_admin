@@ -9,6 +9,7 @@ class ServiceModel {
   String serviceSubcategory;
   String serviceCategory;
   String serviceDescription;
+  String type;
 
   ServiceModel({
     required this.uuid,
@@ -16,6 +17,7 @@ class ServiceModel {
     required this.serviceCategory,
     required this.serviceSubcategory,
     required this.price,
+    required this.type,
     required this.serviceDescription,
     required this.discount,
     required this.photoURL,
@@ -24,6 +26,7 @@ class ServiceModel {
   ///Converting Object into Json Object
   Map<String, dynamic> toJson() => {
         'photoURL': photoURL,
+        'type': type,
         'uuid': uuid,
         'serviceSubcategory': serviceSubcategory,
         'discount': discount,
@@ -39,6 +42,7 @@ class ServiceModel {
 
     return ServiceModel(
       photoURL: snapshot['photoURL'],
+      type: snapshot['type'],
       serviceSubcategory: snapshot['serviceSubcategory'],
       discount: snapshot['discount'],
       uuid: snapshot['uuid'],

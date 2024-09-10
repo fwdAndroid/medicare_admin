@@ -18,16 +18,21 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: mainBtnColor,
+          automaticallyImplyLeading: false,
           title: Text(
             'Home Page',
-            style: TextStyle(color: mainBtnColor),
+            style: TextStyle(color: white),
           ),
           bottom: TabBar(
             unselectedLabelColor: black,
-            labelColor: mainBtnColor,
+            labelColor: white,
             tabs: [
               Tab(icon: Icon(Icons.home_max), text: "Home Services"),
-              Tab(icon: Icon(Icons.camera_alt), text: "Clincic Services")
+              Tab(
+                  icon: Icon(Icons.cloud_circle_rounded),
+                  text: "Clincic Services")
             ],
           ),
         ),
