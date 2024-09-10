@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
-import 'product_booking.dart';
-
 class ProductDetail extends StatefulWidget {
   final discount;
   final photoURL;
