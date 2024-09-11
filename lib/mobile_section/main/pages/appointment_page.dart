@@ -51,8 +51,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: <Widget>[Upcomming(), Completed(), Cancelled()],
+        body: TabBarView(
+          children: <Widget>[Upcoming(), Completed(), Cancelled()],
         ),
       ),
     );

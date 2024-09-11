@@ -88,7 +88,7 @@ class _AddDoctorState extends State<AddDoctor> {
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
                 child: TextFormInputField(
-                  controller: doctorEmailController,
+                  controller: doctorPasswordController,
                   hintText: "Doctor Password",
                   textInputType: TextInputType.text,
                 ),

@@ -138,8 +138,8 @@ class _HomeCareTabState extends State<HomeCareTab> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (builder) => ProductDetail(
-                                                description:
-                                                    serviceData['description'],
+                                                description: serviceData[
+                                                    'serviceDescription'],
                                                 discount:
                                                     serviceData['discount']
                                                         .toString(),
@@ -264,8 +264,8 @@ class _HomeCareTabState extends State<HomeCareTab> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (builder) => ProductDetail(
-                                            description:
-                                                serviceData['description'],
+                                            description: serviceData[
+                                                'serviceDescription'],
                                             discount: serviceData['discount']
                                                 .toString(),
                                             photoURL: serviceData['photoURL'],
@@ -392,8 +392,8 @@ class _HomeCareTabState extends State<HomeCareTab> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (builder) => ProductDetail(
-                                            description:
-                                                serviceData['description'],
+                                            description: serviceData[
+                                                'serviceDescription'],
                                             discount: serviceData['discount']
                                                 .toString(),
                                             photoURL: serviceData['photoURL'],
@@ -519,8 +519,8 @@ class _HomeCareTabState extends State<HomeCareTab> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (builder) => ProductDetail(
-                                            description:
-                                                serviceData['description'],
+                                            description: serviceData[
+                                                'serviceDescription'],
                                             discount: serviceData['discount']
                                                 .toString(),
                                             photoURL: serviceData['photoURL'],
@@ -643,8 +643,8 @@ class _HomeCareTabState extends State<HomeCareTab> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (builder) => ProductDetail(
-                                            description:
-                                                serviceData['description'],
+                                            description: serviceData[
+                                                'serviceDescription'],
                                             discount: serviceData['discount']
                                                 .toString(),
                                             photoURL: serviceData['photoURL'],
