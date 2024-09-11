@@ -7,8 +7,6 @@ import 'package:medicare_admin/mobile_section/details/product_detail.dart';
 import 'package:medicare_admin/mobile_section/services/clinic_add_service.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
-import '../../screens/main/home_page.dart';
-
 class ClinicTab extends StatefulWidget {
   const ClinicTab({super.key});
 
@@ -31,7 +29,7 @@ class _ClinicTabState extends State<ClinicTab> {
         floatingActionButton: FloatingActionButton(
             child: Icon(
               Icons.add,
-              color: white,
+              color: colorwhite,
             ),
             backgroundColor: mainBtnColor,
             onPressed: () {
@@ -83,7 +81,7 @@ class _ClinicTabState extends State<ClinicTab> {
                                           child: Text(
                                             'No. ${imgList.indexOf(item)} image',
                                             style: TextStyle(
-                                              color: white,
+                                              color: colorwhite,
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.bold,
                                             ),

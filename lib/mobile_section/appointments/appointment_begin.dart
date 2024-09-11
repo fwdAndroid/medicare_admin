@@ -10,8 +10,6 @@ import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/utils/image_utils.dart';
 import 'package:medicare_admin/widgets/text_form_field.dart';
 
-import '../../screens/main/home_page.dart';
-
 class AppointmentBegin extends StatefulWidget {
   AppointmentBegin({
     super.key,
@@ -69,7 +67,7 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
               width: 45,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: white,
+                color: colorwhite,
               ),
               child: Center(
                 child: Padding(
@@ -84,7 +82,7 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
             ),
           ),
         ),
-        iconTheme: IconThemeData(color: white),
+        iconTheme: IconThemeData(color: colorwhite),
       ),
       body: SingleChildScrollView(
         child: Column(

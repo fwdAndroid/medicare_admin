@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicare_admin/mobile_section/details/doctor_detail.dart';
 import 'package:medicare_admin/mobile_section/doctor/add_doctor.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class DoctorPage extends StatefulWidget {
@@ -21,7 +20,7 @@ class _DoctorPageState extends State<DoctorPage> {
       floatingActionButton: FloatingActionButton(
           child: Icon(
             Icons.add,
-            color: white,
+            color: colorwhite,
           ),
           backgroundColor: mainBtnColor,
           onPressed: () {
@@ -35,7 +34,7 @@ class _DoctorPageState extends State<DoctorPage> {
         title: Text(
           "Medical Consultation",
           style: GoogleFonts.poppins(
-              fontSize: 18, color: white, fontWeight: FontWeight.bold),
+              fontSize: 18, color: colorwhite, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(

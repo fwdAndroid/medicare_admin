@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -117,6 +118,17 @@ class _ProductDetailState extends State<ProductDetail> {
                 ),
               ),
             ),
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Delete"),
+                  style: ElevatedButton.styleFrom(),
+                ),
+                SaveButton(
+                    title: "Edit Profile", onTap: () {}, color: mainBtnColor)
+              ],
+            )
           ],
         ),
       ),

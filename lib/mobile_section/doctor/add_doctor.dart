@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:medicare_admin/database/database.dart';
 import 'package:medicare_admin/mobile_section/main/main_dashboard.dart';
-import 'package:medicare_admin/screens/database/database.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/utils/image_utils.dart';
@@ -45,11 +44,11 @@ class _AddDoctorState extends State<AddDoctor> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: white),
+          iconTheme: IconThemeData(color: colorwhite),
           backgroundColor: mainBtnColor,
           title: Text(
             "Add Doctor",
-            style: TextStyle(color: white),
+            style: TextStyle(color: colorwhite),
           ),
           centerTitle: true,
         ),
@@ -129,7 +128,7 @@ class _AddDoctorState extends State<AddDoctor> {
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(22)),
                         borderSide: BorderSide(
-                          color: white,
+                          color: colorwhite,
                         )),
                     contentPadding: EdgeInsets.all(8),
                     fillColor: Color(0xffF6F7F9),

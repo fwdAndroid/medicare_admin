@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medicare_admin/mobile_section/tab/clinic_tab.dart';
 import 'package:medicare_admin/mobile_section/tab/home_care_tab.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class MainHomeMobile extends StatefulWidget {
@@ -23,11 +22,11 @@ class _MainHomeMobileState extends State<MainHomeMobile> {
           automaticallyImplyLeading: false,
           title: Text(
             'Home Page',
-            style: TextStyle(color: white),
+            style: TextStyle(color: colorwhite),
           ),
           bottom: TabBar(
             unselectedLabelColor: black,
-            labelColor: white,
+            labelColor: colorwhite,
             tabs: [
               Tab(icon: Icon(Icons.home_max), text: "Home Services"),
               Tab(

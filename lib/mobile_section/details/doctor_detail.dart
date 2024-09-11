@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicare_admin/mobile_section/appointments/appointment_begin.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
@@ -40,7 +39,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
               width: 45,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: white,
+                color: colorwhite,
               ),
               child: Center(
                 child: Padding(
@@ -55,7 +54,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
             ),
           ),
         ),
-        iconTheme: IconThemeData(color: white),
+        iconTheme: IconThemeData(color: colorwhite),
         backgroundColor: mainBtnColor,
       ),
       body: Column(
@@ -73,7 +72,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
           Container(
             margin: EdgeInsets.only(top: 2),
             decoration: BoxDecoration(
-              color: white,
+              color: colorwhite,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             ),

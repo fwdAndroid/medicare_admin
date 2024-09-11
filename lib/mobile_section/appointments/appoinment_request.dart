@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medicare_admin/mobile_section/appointments/appointment_request_done.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/widgets/text_form_field.dart';
@@ -40,7 +39,7 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
               width: 45,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: white,
+                color: colorwhite,
               ),
               child: Center(
                 child: Padding(
@@ -55,7 +54,7 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
             ),
           ),
         ),
-        iconTheme: IconThemeData(color: white),
+        iconTheme: IconThemeData(color: colorwhite),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

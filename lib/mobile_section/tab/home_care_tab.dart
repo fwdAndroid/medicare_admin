@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:medicare_admin/mobile_section/details/product_detail.dart';
 import 'package:medicare_admin/mobile_section/services/add_services.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class HomeCareTab extends StatefulWidget {
@@ -30,14 +29,14 @@ class _HomeCareTabState extends State<HomeCareTab> {
         floatingActionButton: FloatingActionButton(
             child: Icon(
               Icons.add,
-              color: white,
+              color: colorwhite,
             ),
             backgroundColor: mainBtnColor,
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (builder) => AddServices()));
             }),
-        backgroundColor: white,
+        backgroundColor: colorwhite,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +82,7 @@ class _HomeCareTabState extends State<HomeCareTab> {
                                           child: Text(
                                             'No. ${imgList.indexOf(item)} image',
                                             style: TextStyle(
-                                              color: white,
+                                              color: colorwhite,
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.bold,
                                             ),

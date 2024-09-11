@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class Support extends StatefulWidget {
@@ -22,11 +21,11 @@ class _SupportState extends State<Support> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: white),
+        iconTheme: IconThemeData(color: colorwhite),
         title: Text(
           "Support",
           style: GoogleFonts.workSans(
-              color: white, fontSize: 18, fontWeight: FontWeight.w500),
+              color: colorwhite, fontSize: 18, fontWeight: FontWeight.w500),
         ),
         backgroundColor: mainBtnColor,
       ),

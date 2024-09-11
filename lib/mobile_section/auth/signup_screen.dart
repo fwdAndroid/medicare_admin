@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medicare_admin/database/auth_methods.dart';
 import 'package:medicare_admin/mobile_section/auth/login_screen.dart';
-import 'package:medicare_admin/screens/database/auth_methods.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 

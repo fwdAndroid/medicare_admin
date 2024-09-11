@@ -4,7 +4,6 @@ import 'package:medicare_admin/mobile_section/main/pages/appointment_page.dart';
 import 'package:medicare_admin/mobile_section/main/pages/doctor_page.dart';
 import 'package:medicare_admin/mobile_section/main/pages/history_page.dart';
 import 'package:medicare_admin/mobile_section/main/pages/home_page.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class MainDashboard extends StatefulWidget {
@@ -67,7 +66,7 @@ class _MainDashboardState extends State<MainDashboard> {
                         width: 20,
                       ),
                 label: 'Doctor',
-                backgroundColor: white,
+                backgroundColor: colorwhite,
               ),
               BottomNavigationBarItem(
                 icon: _currentIndex == 2
@@ -82,7 +81,7 @@ class _MainDashboardState extends State<MainDashboard> {
                         width: 20,
                       ),
                 label: 'Appointment',
-                backgroundColor: white,
+                backgroundColor: colorwhite,
               ),
               BottomNavigationBarItem(
                 icon: _currentIndex == 3
@@ -97,7 +96,7 @@ class _MainDashboardState extends State<MainDashboard> {
                         width: 20,
                       ),
                 label: 'History',
-                backgroundColor: white,
+                backgroundColor: colorwhite,
               ),
             ],
           ),

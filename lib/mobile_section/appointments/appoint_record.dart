@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class RecordsHistory extends StatefulWidget {
@@ -94,7 +93,7 @@ class _RecordsHistoryState extends State<RecordsHistory> {
               height: 100,
               width: 360,
               decoration: BoxDecoration(
-                color: white,
+                color: colorwhite,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(
@@ -164,7 +163,7 @@ class _RecordsHistoryState extends State<RecordsHistory> {
               height: 200,
               width: 360,
               decoration: BoxDecoration(
-                color: white,
+                color: colorwhite,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(
@@ -256,7 +255,7 @@ class _RecordsHistoryState extends State<RecordsHistory> {
               height: 200,
               width: 360,
               decoration: BoxDecoration(
-                color: white,
+                color: colorwhite,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(

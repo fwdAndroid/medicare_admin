@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:medicare_admin/database/storage_methods.dart';
 import 'package:medicare_admin/model/doctor_model.dart';
 import 'package:medicare_admin/model/medicine_model.dart';
 import 'package:medicare_admin/model/service_model.dart';
-import 'package:medicare_admin/screens/database/storage_methods.dart';
 import 'package:uuid/uuid.dart';
 
 class Database {
@@ -54,9 +54,9 @@ class Database {
       required String serviceCategory,
       required String serviceSubcategory,
       required String serviceDescription,
-      required String price,
+      required int price,
       required String type,
-      required String discount,
+      required int discount,
       required Uint8List file}) async {
     String res = 'Wrong Service Name';
     try {

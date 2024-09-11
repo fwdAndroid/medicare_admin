@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicare_admin/mobile_section/appointments/appoint_record.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 
 class AppointmentHistory extends StatefulWidget {
@@ -17,7 +16,7 @@ class _AppointmentHistoryState extends State<AppointmentHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: white,
+        backgroundColor: colorwhite,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: true,

@@ -6,7 +6,6 @@ import 'package:medicare_admin/mobile_section/setting_pages/change_password.dart
 import 'package:medicare_admin/mobile_section/setting_pages/notification_screen.dart';
 import 'package:medicare_admin/mobile_section/setting_pages/payment_page.dart';
 import 'package:medicare_admin/mobile_section/setting_pages/support.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/widgets/logout_widget.dart';
@@ -48,7 +47,7 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: white,
+                    color: colorwhite,
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12))),
