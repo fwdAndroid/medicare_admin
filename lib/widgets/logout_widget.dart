@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicare_admin/mobile_section/auth/login_screen.dart';
-import 'package:medicare_admin/screens/main/home_page.dart';
 import 'package:medicare_admin/utils/colors.dart';
 import 'package:medicare_admin/utils/message_utils.dart';
 
@@ -84,7 +83,7 @@ class LogoutWidget extends StatelessWidget {
               },
               child: Text(
                 "Yes",
-                style: TextStyle(color: white),
+                style: TextStyle(color: colorwhite),
               ),
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(137, 50),

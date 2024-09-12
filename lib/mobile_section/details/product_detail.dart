@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medicare_admin/mobile_section/services/edit_services.dart';
 import 'package:medicare_admin/utils/buttons.dart';
 import 'package:medicare_admin/utils/colors.dart';
+import 'package:medicare_admin/widgets/delete_widgets.dart';
 
 class ProductDetail extends StatefulWidget {
   final discount;
@@ -119,14 +121,43 @@ class _ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Delete"),
-                  style: ElevatedButton.styleFrom(),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DeleteAlertWidget(uuid: widget.uuid);
+                      },
+                    );
+                  },
+                  child: Text(
+                    "Delete",
+                    style: TextStyle(color: colorwhite),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: cancelColor, fixedSize: Size(150, 60)),
                 ),
-                SaveButton(
-                    title: "Edit Profile", onTap: () {}, color: mainBtnColor)
+                const SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => EditServices(
+                                  uuid: widget.uuid,
+                                )));
+                  },
+                  child: Text(
+                    "Edit Profile",
+                    style: TextStyle(color: colorwhite),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: g, fixedSize: Size(150, 60)),
+                ),
               ],
             )
           ],
